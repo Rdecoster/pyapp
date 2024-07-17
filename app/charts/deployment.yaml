@@ -1,0 +1,23 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mypyapp
+  labels:
+    app: mypyapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mypyapp
+  template:
+    metadata:
+      labels:
+        app: mypyapp
+    spec:
+      containers:
+      - name: pyapp
+        image: rdecoster/python:latest
+        ports:
+        - containerPort: 3000
+
